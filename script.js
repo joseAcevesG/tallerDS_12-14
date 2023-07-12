@@ -18,3 +18,13 @@ function condicional(num1, num2){
         alert("los numeros son iguales");
     }
 }
+
+function condicional2(num){
+    switch(num){
+        case 1: alert("es uno"); 
+                break;
+        case 2: alert("es dos");
+                break;
+        default: alert("es otro numero");
+    }
+}
