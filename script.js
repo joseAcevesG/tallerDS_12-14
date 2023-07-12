@@ -7,3 +7,11 @@ function clickBoton() {
 		parrafo.innerHTML = "Hola";
 	}
 }
+
+function botenes(boton) {
+	const parrafo = document.getElementById("parrafo2");
+	let numero = Number(boton.getAttribute("numero"));
+
+	switch (numero) {
+	}
+}
