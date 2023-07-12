@@ -21,5 +21,15 @@ function botenes(boton) {
 	let numero = Number(boton.getAttribute("numero"));
 
 	switch (numero) {
-	}
+        case 1: parrafo.innerHTML = "1";
+                break;
+        case 2: parrafo.innerHTML = "2";
+                break;
+        case 3: parrafo.innerHTML = "3";
+                break;
+        case 4: parrafo.innerHTML = "4";
+                break;
+        case 5: parrafo.innerHTML = "5";
+                break;
+    }
 }
