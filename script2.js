@@ -13,6 +13,7 @@ let abajo;
 let izquierda;
 let derecha;
 
+let comida;
 
 function setup(){
     canvas=createCanvas(ANCHO_CANVAS,ALTO_CANVAS);
@@ -23,6 +24,10 @@ function setup(){
     abajo=createVector(0,1);
     derecha=createVector(1,0);
     izquierda=createVector(-1,0);
+
+    comida=createVector();
+    posicionarComida();
+
 }
 
 function windowResized(){
@@ -40,6 +45,9 @@ function draw(){
     background("black");
 
     snake.dibujar();
+
+    fill("crimson");
+    rect(comida.x * LADO, comida.y * LADO, LADO, LADO);
 
 }
 
@@ -59,6 +67,11 @@ function keyPressed(){
             snake.direccion=izquierda;
             break;
     }
+}
+
+
+function posicionarComida(){
+    comida=createVector(floor(random(COLUMNAS)), floor(random(FILAS)));
 }
 
 function Snake(){
@@ -89,7 +102,7 @@ function Snake(){
 
         this.posicion.add(this.direccion);
 
-        
+
 
         this.bordes();
     }
