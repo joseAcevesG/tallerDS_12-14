@@ -57,17 +57,33 @@ function draw(){
 
 function keyPressed(){
 
-    switch(keyCode){
+    if(!isLooping()){
+        juegoNuevo();    
+    }
+
+    switch(keyCode){   
         case UP_ARROW:
+            if(snake.cola.length !=0 && snake.direccion.equals(abajo)){
+                break;
+            }
             snake.direccion=arriba;
             break;
         case DOWN_ARROW:
+            if(snake.cola.length !=0 && snake.direccion.equals(arriba)){
+                break;
+            }
             snake.direccion=abajo;
             break;
         case RIGHT_ARROW:
+            if(snake.cola.length !=0 && snake.direccion.equals(izquierda)){
+                break;
+            }
             snake.direccion=derecha;
             break;
         case LEFT_ARROW:
+            if(snake.cola.length !=0 && snake.direccion.equals(derecha)){
+                break;
+            }
             snake.direccion=izquierda;
             break;
     }
@@ -76,6 +92,21 @@ function keyPressed(){
 
 function posicionarComida(){
     comida=createVector(floor(random(COLUMNAS)), floor(random(FILAS)));
+}
+
+function juegoNuevo(){
+    snake= new Snake;
+    posicionarComida();
+    loop();
+}
+
+function juegoTerminado(){
+    if(snake.choque()){
+        noLoop();
+        textAlign(CENTER,CENTER);
+        textSize(50);
+        text("GAME OVER", width/2, height/2);
+    }
 }
 
 function Snake(){
@@ -103,6 +134,15 @@ function Snake(){
         }
     }
 
+    this.choque=function(){
+        for(let i=0; i< this.cola.length; i++){
+            if(this.posicion.equals(this.cola[i])){
+                return true;
+            }
+        }
+        return false;
+    }
+
     this.dibujar= function(){
         fill("white");
         rect(this.posicion.x*LADO , this.posicion.y * LADO , LADO, LADO);
@@ -123,6 +163,8 @@ function Snake(){
         
 
         this.bordes();
+
+        juegoTerminado();
     }
 
 }
