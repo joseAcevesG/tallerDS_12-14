@@ -15,9 +15,12 @@ let derecha;
 
 let comida;
 
+let frames;
+
 function setup(){
     canvas=createCanvas(ANCHO_CANVAS,ALTO_CANVAS);
-    frameRate(10);
+    frames=10;
+    frameRate(frames);
 
     snake= new Snake();
     arriba=createVector(0,-1);
@@ -52,6 +55,8 @@ function draw(){
     if(snake.posicion.equals(comida)){
         posicionarComida();
         snake.tamaño++;
+        frames+=5;
+        frameRate(frames);
     }
 }
 
@@ -92,6 +97,16 @@ function keyPressed(){
 
 function posicionarComida(){
     comida=createVector(floor(random(COLUMNAS)), floor(random(FILAS)));
+    let flag;
+    do{
+        flag=false;
+        for(let i=0; i <snake.cola.length; i++){
+            if(comida.equals(snake.cola[i])){
+                flag=true;
+                break;
+            }
+        }
+    }while(flag)
 }
 
 function juegoNuevo(){
