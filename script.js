@@ -11,6 +11,9 @@ function crearNodos() {
 
 function listaComida() {}
 
+// padre.firstElementChild
+// padre.firstElementChild.remove();
+
 function quitarNodo() {}
 
 function Rectangulo() {}
