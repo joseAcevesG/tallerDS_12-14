@@ -16,6 +16,7 @@ let derecha;
 
 function setup(){
     canvas=createCanvas(ANCHO_CANVAS,ALTO_CANVAS);
+    frameRate(10);
 
     snake= new Snake();
     arriba=createVector(0,-1);
@@ -64,12 +65,33 @@ function Snake(){
     this.posicion= createVector(COLUMNAS/2,FILAS/2);
     this.direccion= createVector();
 
+    this.bordes= function(){
+        if(this.posicion.x >= COLUMNAS){
+            this.posicion.x=0;
+        }
+
+        if(this.posicion.x< 0){
+            this.posicion.x =COLUMNAS -1;
+        }
+        if(this.posicion.y >= FILAS){
+            this.posicion.y=0;
+        }
+
+        if(this.posicion.y< 0){
+            this.posicion.y =FILAS -1;
+        }
+    }
+
     this.dibujar= function(){
         fill("white");
 
         rect(this.posicion.x*LADO , this.posicion.y * LADO , LADO, LADO);
 
         this.posicion.add(this.direccion);
+
+        
+
+        this.bordes();
     }
 
 }
