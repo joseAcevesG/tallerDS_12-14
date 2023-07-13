@@ -1,0 +1,58 @@
+FUNCIONES
+let variable = "algo"
+
+if(condicion){
+
+}else if(condicion2){
+
+}else{
+
+}
+
+switch(variable){
+	case : cosa que va a pasar;
+		break;
+
+	default: cosa que pasa si no entra en ningun case
+}
+
+function name (parametros de entrada){
+
+}
+
+ARRAYS
+
+arr = [ "hola", 2, 3]
+arr[0] -> "hola"
+
+for(let i = 0: i...; i++){
+
+}
+
+while(condicion){
+
+}
+
+CREAR NODOS EN DOM
+
+let nodeTemp = document.createElement("p");
+padre.append(nodeTemp);
+nodeTemp.innerHTML="texto"; //colcarle texto al nodo
+
+CONSEGUIR ATRIBUTO DE ETIQUETA
+document.getAttribute("nombre");
+
+PONER VALOR A ATRIBUTO DE ETIQUETA
+document.setAttribute("nombre", "valor");
+
+OBJETOS/CLASES
+
+function Object(){
+	this.atributo;
+	this.atributo2;
+
+	this.function = function () {
+
+	}
+}		let objeto = new Object();
+
