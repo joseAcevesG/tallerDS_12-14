@@ -49,6 +49,10 @@ function draw(){
     fill("crimson");
     rect(comida.x * LADO, comida.y * LADO, LADO, LADO);
 
+    if(snake.posicion.equals(comida)){
+        posicionarComida();
+        snake.tamaño++;
+    }
 }
 
 function keyPressed(){
@@ -77,6 +81,8 @@ function posicionarComida(){
 function Snake(){
     this.posicion= createVector(COLUMNAS/2,FILAS/2);
     this.direccion= createVector();
+
+    this.tamaño=0;
 
     this.bordes= function(){
         if(this.posicion.x >= COLUMNAS){
