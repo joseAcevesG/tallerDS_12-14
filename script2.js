@@ -82,6 +82,8 @@ function Snake(){
     this.posicion= createVector(COLUMNAS/2,FILAS/2);
     this.direccion= createVector();
 
+    this.cola=[]
+
     this.tamaño=0;
 
     this.bordes= function(){
@@ -103,12 +105,22 @@ function Snake(){
 
     this.dibujar= function(){
         fill("white");
-
         rect(this.posicion.x*LADO , this.posicion.y * LADO , LADO, LADO);
+
+        for(let i=0; i< this.cola.length; i++){
+            fill("white");
+            rect(this.cola[i].x*LADO , this.cola[i].y * LADO , LADO, LADO);
+        }
+
+        this.cola.push(this.posicion.copy());
+        if(this.cola.length> this.tamaño){
+            this.cola.splice(0,1)
+        }
+
 
         this.posicion.add(this.direccion);
 
-
+        
 
         this.bordes();
     }
