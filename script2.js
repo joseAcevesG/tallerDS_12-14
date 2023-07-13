@@ -8,11 +8,20 @@ let canvas;
 
 let snake;
 
+let arriba;
+let abajo;
+let izquierda;
+let derecha;
+
+
 function setup(){
     canvas=createCanvas(ANCHO_CANVAS,ALTO_CANVAS);
 
     snake= new Snake();
-
+    arriba=createVector(0,-1);
+    abajo=createVector(0,1);
+    derecha=createVector(1,0);
+    izquierda=createVector(-1,0);
 }
 
 function windowResized(){
@@ -33,6 +42,24 @@ function draw(){
 
 }
 
+function keyPressed(){
+
+    switch(keyCode){
+        case UP_ARROW:
+            snake.direccion=arriba;
+            break;
+        case DOWN_ARROW:
+            snake.direccion=abajo;
+            break;
+        case RIGHT_ARROW:
+            snake.direccion=derecha;
+            break;
+        case LEFT_ARROW:
+            snake.direccion=izquierda;
+            break;
+    }
+}
+
 function Snake(){
     this.posicion= createVector(COLUMNAS/2,FILAS/2);
     this.direccion= createVector();
@@ -41,5 +68,8 @@ function Snake(){
         fill("white");
 
         rect(this.posicion.x*LADO , this.posicion.y * LADO , LADO, LADO);
+
+        this.posicion.add(this.direccion);
     }
+
 }
